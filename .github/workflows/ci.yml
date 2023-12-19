@@ -28,7 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run markdown lint
         run: |
-          npm install remark-cli remark-present-lint-consistent
-          npm remark . --use remark-present-lint-consistent --frail
+          npm install remark-cli remark-preset-lint-consistent
+          npm remark . --use remark-preset-lint-consistent --frail
               
 
