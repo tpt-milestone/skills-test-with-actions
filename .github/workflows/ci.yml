@@ -30,7 +30,7 @@ jobs:
         run: |
           npm config set fund false 
           npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
-          npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2>
+          npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-lint-report.json
 
       - uses: actions/upload-artifact@v3
         with:
