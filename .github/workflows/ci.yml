@@ -28,6 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run markdown lint
         run: |
+          npm config set fund false 
           npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
           npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2>
 
