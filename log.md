@@ -1,1 +1,1 @@
-main log
+test2 log
