@@ -35,6 +35,7 @@ jobs:
           echo ${{ github.ref_name }}
           echo $GITHUB_REF
           echo $GITHUB_WORKFLOW
+          echo $GITHUB_RUN_NUMBER
           echo $GITHUB_RUN_ID
           echo $GITHUB_RUN_ATTEMPT
           echo $GITHUB_REF_NAME
@@ -44,6 +45,8 @@ jobs:
           echo $GITHUB_BASE_REF
           echo $GITHUB_ACTIONS
           echo $GITHUB_ACTION
+          echo "$GITHUB_WORKFLOW #$GITHUB_RUN_NUMBER"
+          echo "${{ github.workflow }} #${{ github.run_number }}"
         
         
 
