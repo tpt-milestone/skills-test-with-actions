@@ -53,6 +53,9 @@ jobs:
         
       - name: Print the log file
         run: echo The Log contains $(cat log.md)
+
+      - name: Test xml
+        run: xml_grep log2.md
         
       # Runs a single command using the runners shell
       - name: Run markdown lint
