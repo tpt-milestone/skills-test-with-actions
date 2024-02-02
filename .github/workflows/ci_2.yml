@@ -61,6 +61,9 @@ jobs:
           npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
           npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-lint-report.json
 
+      - name: Create folder
+        run: mkdir upload
+        
       - name: Copy
         run: cp log.md upload/log22.md
 
