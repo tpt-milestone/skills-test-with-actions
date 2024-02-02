@@ -26,9 +26,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Print the log file
-        run: echo The Log contains $(cat log.md)
-
       - name: Testing
         run: | 
           echo Testing...
@@ -48,8 +45,12 @@ jobs:
           echo "$GITHUB_WORKFLOW #$GITHUB_RUN_NUMBER"
           echo "${{ github.workflow }} #${{ github.run_number }}"
         
-        
+      - name: Test file
+        run: printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n\t<string name=\"app_version\">23.1</string>\n\t<string name=\"branch_name\">${{ github.ref_name }}</string>\n\t<string name=\"build_number\">${{ github.run_number }}</string>\n\t<string name=\"global_number\">${{ github.workflow }} #${{ github.run_number }}</string>\n</resources>" > log.md
 
+      - name: Print the log file
+        run: echo The Log contains $(cat log.md)
+        
       # Runs a single command using the runners shell
       - name: Run markdown lint
         run: |
