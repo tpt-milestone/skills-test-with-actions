@@ -53,7 +53,7 @@ jobs:
             \t<string name=\"branch_name\">${{ github.ref_name }}</string>\n
             \t<string name=\"build_number\">${{ github.run_number }}</string>\n
             \t<string name=\"global_number\">${{ github.workflow }} \u0023${{ github.run_number }}</string>\n
-          </resources>" > log.md
+          </resources> > log.md
 
       - name: Test file2
         run: printf "test2" > log2.md
