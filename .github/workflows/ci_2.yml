@@ -46,12 +46,12 @@ jobs:
           echo "${{ github.workflow }} #${{ github.run_number }}"
         
       - name: Test file
-        run: printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>\
-          <resources>\
-            <string name=\"app_version\">$( grep 'app_version' file1.xml | cut -f2 -d ">" | cut -f1 -d "<" )</string>\
-            <string name=\"branch_name\">${{ github.ref_name }}</string>\
-            <string name=\"build_number\">${{ github.run_number }}</string>\
-            <string name=\"global_number\">${{ github.workflow }} \u0023${{ github.run_number }}</string>\
+        run: printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+          <resources>
+            <string name=\"app_version\">$( grep 'app_version' file1.xml | cut -f2 -d ">" | cut -f1 -d "<" )</string>
+            <string name=\"branch_name\">${{ github.ref_name }}</string>
+            <string name=\"build_number\">${{ github.run_number }}</string>
+            <string name=\"global_number\">${{ github.workflow }} \u0023${{ github.run_number }}</string>
           </resources>" > log.md
 
       - name: Test file2
