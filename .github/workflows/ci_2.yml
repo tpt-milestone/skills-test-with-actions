@@ -50,7 +50,11 @@ jobs:
           echo "$GITHUB_WORKFLOW #$GITHUB_RUN_NUMBER"
           echo "${{ github.workflow }} #${{ github.run_number }}"
         
-        
+      - name: Testing2
+        run: | 
+          test_var_2=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
+          echo Testing2...
+          curl -H X-Header-1:$test_var_2 -H X-Header-2:${test_var_2} -H X-Header-3:${{ test_var_2 }}
 
       # Runs a single command using the runners shell
       - name: Run markdown lint
