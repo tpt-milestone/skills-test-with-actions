@@ -31,7 +31,7 @@ jobs:
 
       - name: Testing
         run: | 
-          test_var = "This is 123..."
+          test_var=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
           echo Testing...
           echo $test_var
           echo ${{ github.ref_name }}
