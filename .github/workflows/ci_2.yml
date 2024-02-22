@@ -54,7 +54,7 @@ jobs:
         run: | 
           echo Testing2...
           test_2=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
-          curl -H X-Header-1:$test_2 -H X-Header-2:${test_2} -H X-Header-3:${{ echo $test_2 }}
+          curl -H X-Header-1:$test_2 -H X-Header-2:${test_2}
 
       # Runs a single command using the runners shell
       - name: Run markdown lint
