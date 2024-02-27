@@ -32,7 +32,8 @@ jobs:
       - name: Update repo name
         id: replace-repo-name
         run: |
-          "::set-output name=rname::$('asdasd#asfa$dsfds_asasd#' | sed 's/#/_/g')"
+          echo "your if else logic here, if all ok, set the output to true"
+          echo "rname=$('asdasd#asfa$dsfds_asasd#' | sed 's/#/_/g')" >> $GITHUB_OUTPUT
 
       - name: Testing
         run: | 
