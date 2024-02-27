@@ -29,6 +29,11 @@ jobs:
       - name: Print the log file
         run: echo The Log contains $(cat log.md)
 
+      - name: Update repo name
+        id: replace-repo-name
+        run: |
+          "::set-output name=rname::$('asdasd#asfa$dsfds_asasd#' | sed 's/#/_/g')"
+
       - name: Testing
         run: | 
           test_var=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
@@ -58,9 +63,8 @@ jobs:
           test_7="${test_6//_/-}"
           test_version=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
           echo "upload directory: $test_version"
-          echo ${{ format('{0}/{1}/{2}', env.TEMP_DB_FOLDER, $test_version, 'artifacts') }}
-          test_8=${{ format('{0}/{1}/{2}', env.TEMP_DB_FOLDER, $test_version, 'artifacts') }}
           echo $test_8
+          echo ${{ steps.replace-repo-name.outputs.rname }}
           curl -H X-Header-1:$test_2 -H X-Header-2:$test_version -H X-Header-5:$test_7
 
       # Runs a single command using the runners shell
