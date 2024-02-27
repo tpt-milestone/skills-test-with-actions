@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "your if else logic here, if all ok, set the output to true"
           echo "rname=asd" >> $GITHUB_OUTPUT
-          echo "bname:qwe" >> $GITHUB_OUTPUT
+          echo "bname='qwe'" >> $GITHUB_OUTPUT
 
       - name: Testing
         run: | 
