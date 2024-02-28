@@ -35,8 +35,6 @@ jobs:
           echo "your if else logic here, if all ok, set the output to true"
           echo "rname=asd" >> $GITHUB_OUTPUT
           echo "bname='qwe'" >> $GITHUB_OUTPUT
-          echo "tname=${{ github.ref_name }} | sed 's/_/*/g'" >> $GITHUB_OUTPUT
-          echo "sname=(${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUTPUT
           echo "vname=$(echo ${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUTPUT
 
       - name: Testing
@@ -72,10 +70,8 @@ jobs:
           echo ${{ steps.replace-repo-name.outputs }}
           echo ${{ steps.replace-repo-name.outputs.bname }}
           echo 'r' ${{ steps.replace-repo-name.outputs.rname }}
-          echo ${{ steps.replace-repo-name.outputs.tname }}
-          echo ${{ steps.replace-repo-name.outputs.sname }}
           echo ${{ steps.replace-repo-name.outputs.vname }}
-          curl -H X-Header-1:$test_2 -H X-Header-2:$test_version -H X-Header-5:$test_7
+          curl -H X-Header-1:$test_2 -H X-Header-2:$test_version -H X-Header-5:$test_7 -H X-Header-6:${{ steps.replace-repo-name.outputs.vname }}
 
       # Runs a single command using the runners shell
       - name: Run markdown lint
