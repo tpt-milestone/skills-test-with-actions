@@ -35,6 +35,9 @@ jobs:
           echo "your if else logic here, if all ok, set the output to true"
           echo "rname=asd" >> $GITHUB_OUTPUT
           echo "bname='qwe'" >> $GITHUB_OUTPUT
+          echo "tname=${{ github.ref_name }} | sed 's/_/*/g'" >> $GITHUB_OUPUT
+          echo "sname=(${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUPUT
+          echo "vname=$(echo ${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUPUT
 
       - name: Testing
         run: | 
@@ -68,7 +71,10 @@ jobs:
           echo $test_8
           echo ${{ steps.replace-repo-name.outputs }}
           echo ${{ steps.replace-repo-name.outputs.bname }}
-          echo ${{ steps.replace-repo-name.outputs.rname }}
+          echo 'r' ${{ steps.replace-repo-name.outputs.rname }}
+          echo ${{ steps.replace-repo-name.outputs.tname }}
+          echo ${{ steps.replace-repo-name.outputs.sname }}
+          echo ${{ steps.replace-repo-name.outputs.vname }}
           curl -H X-Header-1:$test_2 -H X-Header-2:$test_version -H X-Header-5:$test_7
 
       # Runs a single command using the runners shell
