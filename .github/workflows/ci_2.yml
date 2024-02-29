@@ -29,13 +29,11 @@ jobs:
       - name: Print the log file
         run: echo The Log contains $(cat log.md)
 
-      - name: Update repo name
-        id: replace-repo-name
-        run: |
-          echo "your if else logic here, if all ok, set the output to true"
-          echo "rname=asd" >> $GITHUB_OUTPUT
-          echo "bname='qwe'" >> $GITHUB_OUTPUT
-          echo "vname=$(echo ${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUTPUT
+      # Prepares the upload directory name by using the name of the branch but replaces all hashtags
+      # to underscores because hashtags are not allowed on nexus upload paths
+      - name: Prepare upload directory name
+        id: directory-name
+        run: echo "name=$(echo ${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUTPUT
 
       - name: Testing
         run: | 
@@ -61,17 +59,9 @@ jobs:
       - name: Testing2
         run: | 
           echo Testing2...
-          test_2=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
-          test_6=${{ github.ref_name }}
-          test_7="${test_6//_/-}"
-          test_version=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
-          echo "upload directory: $test_version"
-          echo $test_8
-          echo ${{ steps.replace-repo-name.outputs }}
-          echo ${{ steps.replace-repo-name.outputs.bname }}
-          echo 'r' ${{ steps.replace-repo-name.outputs.rname }}
-          echo ${{ steps.replace-repo-name.outputs.vname }}
-          curl -H X-Header-1:$test_2 -H X-Header-2:$test_version -H X-Header-5:$test_7 -H X-Header-6:${{ steps.replace-repo-name.outputs.vname }}
+          echo 'r' ${{ steps.directory-name.outputs.name }}
+          echo ${{ steps.directory-name.outputs.name }}
+          curl -H X-Header-1:$test_2 -H X-Header-2:$test_version -H X-Header-5:$test_7 -H X-Header-6:${{ steps.directory-name.outputs.name }}
 
       # Runs a single command using the runners shell
       - name: Run markdown lint
