@@ -54,6 +54,8 @@ jobs:
           echo $GITHUB_ACTIONS
           echo $GITHUB_ACTION
           echo "$GITHUB_WORKFLOW #$GITHUB_RUN_NUMBER"
+          echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g'
+          echo ${{ github.ref_name }} | sed 's/_/*/g' | sed 's/_/-/g'
           echo "${{ github.workflow }} #${{ github.run_number }}"
         
       - name: Testing2
