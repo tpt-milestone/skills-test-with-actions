@@ -45,7 +45,6 @@ jobs:
         run: | 
           echo Testing...
           echo $INPUT_OEM
-          echo ${{ INPUT_OEM }}
           echo ${{ github.ref_name }}
           echo $GITHUB_REF
           echo $GITHUB_WORKFLOW
