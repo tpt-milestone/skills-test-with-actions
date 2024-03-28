@@ -37,11 +37,11 @@ jobs:
 
       - name: Test upload directory name
         id: test-directory-name
-        run: echo "name=$(echo _test | sed 's/_/*/g')" >> $GITHUB_OUTPUT
+        run: echo "name=$(echo _tes#t | sed 's/_/*/g')" >> $GITHUB_OUTPUT
 
       - name: Test upload directory name 2
         id: test-directory-name-2
-        run: echo "name=$(echo #test | sed 's/#/_/g')" >> $GITHUB_OUTPUT
+        run: echo "name=$(echo '#test' | sed 's/#/_/g')" >> $GITHUB_OUTPUT
 
       - name: Testing2_
         run: | 
