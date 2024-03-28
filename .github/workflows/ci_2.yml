@@ -33,7 +33,7 @@ jobs:
       # to underscores because hashtags are not allowed on nexus upload paths
       - name: Prepare upload directory name
         id: directory-name
-        run: echo "name=$(echo ${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUTPUT
+        run: echo "name=$(echo '${{ github.ref_name }}' | sed 's/_/*/g')" >> $GITHUB_OUTPUT
 
       - name: Test upload directory name
         id: test-directory-name
