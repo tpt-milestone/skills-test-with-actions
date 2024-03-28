@@ -35,6 +35,20 @@ jobs:
         id: directory-name
         run: echo "name=$(echo ${{ github.ref_name }} | sed 's/_/*/g')" >> $GITHUB_OUTPUT
 
+      - name: Test upload directory name
+        id: test-directory-name
+        run: echo "name=$(echo _test | sed 's/_/*/g')" >> $GITHUB_OUTPUT
+
+      - name: Test upload directory name 2
+        id: test-directory-name-2
+        run: echo "name=$(echo #test | sed 's/#/_/g')" >> $GITHUB_OUTPUT
+
+      - name: Testing2_
+        run: | 
+          echo Testing2_...
+          echo 'r' ${{ steps.test-directory-name.outputs.name }}
+          echo 'r' ${{ steps.test-directory-name-2.outputs.name }}
+
       - name: Testing
         run: | 
           test_var=$(echo ${{ github.ref_name }} | sed 's/#/_/g' | sed 's/_/-/g')
